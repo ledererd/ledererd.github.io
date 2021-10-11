@@ -2,7 +2,7 @@
 layout: page
 permalink: /openstack16-101-workshop/exercise02
 ---
-# Exercise 2 - Create a basic network
+## Exercise 2 - Create a basic network
 
 Since we're segregating students in the lab by *projects*, let's now switch to the the project allocated to you.
 
