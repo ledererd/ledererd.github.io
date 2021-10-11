@@ -111,6 +111,11 @@ As before, let's allocate a floating ip address to the instance:
 | 07bfac2b-d2f6-485a-a1af-8a663ebc3501 | web-instance  | ACTIVE | private=172.16.1.4, 10.0.0.162   | cirros |        |
 | 31ffca44-9b62-4a35-a1cf-641ba8017b03 | test-instance | ACTIVE | private=172.16.1.138, 10.0.0.119 | cirros |        |
 +--------------------------------------+---------------+--------+----------------------------------+--------+--------+
+```
+
+You can use the ```curl``` command to fetch the web traffic from the instance:
+
+```
 (user1) [stack@undercloud ~]$ curl $FIP
 Welcome to 172.16.1.4
 
