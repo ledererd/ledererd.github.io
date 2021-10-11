@@ -8,7 +8,7 @@ By now you should be logged into the *Bastion host* in a terminal.  Not much run
 
 ```[student@workstation-f3db ~]$ ssh stack@undercloud.example.com```
 
-You should now be logged into the undercloud workstation.
+You should now be logged into the undercloud workstation.  You should see the following result:
 
 ```
 Activate the web console with: systemctl enable --now cockpit.socket
