@@ -8,7 +8,7 @@ Up till now, we've been creating everything in OpenStack by hand. In the real wo
 
 The better way to provision resources is via *Heat Templates*.
 
-Create the file called ```/home/stack/userX/heat_example_basic.yaml``` with the following contents:
+Create the file called ```/home/stack/userX/heat_example_basic.yaml``` with the following contents (you can use ``vi``):
 
 ```
 heat_template_version: rocky
@@ -78,6 +78,8 @@ outputs:
     description: Floating IP address of instance0 in public network
     value: { get_attr: [ instance0_public, floating_ip_address ] }
 ```
+```
+If you're not a fan of ```vi```, then we have pre-prepared a copy of this file.  Copy it from here: ```/home/stack/setup/lab/heat_example_basic.yaml```.
 
 You can get a rough idea from reading the YAML file above that it creates an instance similar to our previous web instance, and allocates a floating ip.  Let's run it:
 
@@ -101,7 +103,18 @@ You can get a rough idea from reading the YAML file above that it creates an ins
 +---------------------+-----------------------------------------+
 ```
 
-The *stack* is created behind the scenes.  After a few seconds, you should see all the resources created:
+The *stack* is created behind the scenes.  You can check on its progress:
+
+```
+(user1) [stack@undercloud ~]$ openstack stack list
++--------------------------------------+------------+-----------------+----------------------+--------------+
+| ID                                   | Stack Name | Stack Status    | Creation Time        | Updated Time |
++--------------------------------------+------------+-----------------+----------------------+--------------+
+| db483413-ac6e-4eb1-98d9-93c1e9d47ead | example1   | CREATE_COMPLETE | 2021-10-11T04:12:29Z | None         |
++--------------------------------------+------------+-----------------+----------------------+--------------+
+```
+
+After a few seconds, you should see all the resources created:
 
 ```
 (user1) [stack@undercloud ~]$ openstack server list
@@ -112,6 +125,11 @@ The *stack* is created behind the scenes.  After a few seconds, you should see a
 | 07bfac2b-d2f6-485a-a1af-8a663ebc3501 | web-instance                    | ACTIVE | private=172.16.1.4, 10.0.0.162   | cirros |        |
 | 31ffca44-9b62-4a35-a1cf-641ba8017b03 | test-instance                   | ACTIVE | private=172.16.1.138, 10.0.0.119 | cirros |        |
 +--------------------------------------+---------------------------------+--------+----------------------------------+--------+--------+
+```
+
+And you can fetch its web traffic from the *public* (floating ip) allocated to the ```example1-instance0-xxx``` instance:
+
+```
 (user1) [stack@undercloud ~]$ curl 10.0.0.171
 Welcome to 172.16.1.104
 ```
@@ -320,6 +338,8 @@ resources:
 #    description: load balancer floating IP address
 #    value: { get_attr: [ lb_vip_floating_ip, floating_ip_address ] }
 ```
+
+Again, if you're struggling with *vi*, you can copy the file from here: ```/home/stack/setup/lab/heat_example_lbaas.yaml```.
 
 This lab environment does not have the load balancer extensions inserted into the Heat engine, so they are commented out from the template, and we'll do those by hand.  In your production environment, you should not have this problem.
 
