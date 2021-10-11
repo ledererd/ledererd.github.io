@@ -2,7 +2,7 @@
 layout: page
 permalink: /openstack16-101-workshop/exercise05
 ---
-## Exercise 5 - Create a working template with load-balanced workload
+__Exercise 5 - Create a working template with load-balanced workload__
 
 Up till now, we've been creating everything in OpenStack by hand. In the real world, this is way too tedious and is prone to human error.
 
