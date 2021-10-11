@@ -285,7 +285,7 @@ Allocate the *floating ip* to the instance:
 +--------------------------------------+---------------+--------+----------------------------------+--------+--------+
 ```
 
-From the server list above, you can see that the instance is now allocated the floating ip address.  We should be able to ping it and log into it (because we opened up those ports in the security group):
+From the server list above, you can see that the instance is now allocated the floating ip address.  We should be able to ping it:
 
 ```
 (user1) [stack@undercloud ~]$ ping -c3 $FIP
@@ -297,7 +297,11 @@ PING 10.0.0.119 (10.0.0.119) 56(84) bytes of data.
 --- 10.0.0.119 ping statistics ---
 3 packets transmitted, 3 received, 0% packet loss, time 6ms
 rtt min/avg/max/mdev = 0.703/3.544/8.645/3.614 ms
+```
 
+You should also be able to log into it.  The ```cirros``` password is ```gocubsgo```:
+
+```
 (user1) [stack@undercloud ~]$ ssh cirros@${FIP}
 The authenticity of host '10.0.0.119 (10.0.0.119)' can't be established.
 ECDSA key fingerprint is SHA256:Auym0twfjRZuF0NL3k7N3Nrj6uEEcgoTzqddEusQ3lg.
