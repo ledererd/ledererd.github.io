@@ -369,6 +369,18 @@ Let's run it:
 +---------------------+-----------------------------------------+
 ```
 
+You can view the progress of the stack creation:
+
+```
+(user1) [stack@undercloud ~]$ openstack stack list
++--------------------------------------+------------+-----------------+----------------------+--------------+
+| ID                                   | Stack Name | Stack Status    | Creation Time        | Updated Time |
++--------------------------------------+------------+-----------------+----------------------+--------------+
+| dc5c27fb-ce53-4fba-ae68-ad438a3bb6b5 | lbaas      | CREATE_COMPLETE | 2021-10-11T04:25:50Z | None         |
+| db483413-ac6e-4eb1-98d9-93c1e9d47ead | example1   | CREATE_COMPLETE | 2021-10-11T04:12:29Z | None         |
++--------------------------------------+------------+-----------------+----------------------+--------------+
+```
+
 You'll notice that it creates the new network, subnet and router:
 
 ```
