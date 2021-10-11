@@ -261,7 +261,7 @@ Let's allocate a public-facing IP address for this instance.  We do this via a *
 +---------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 ```
 
-You'll notice that the IP address that was created is in the public range (10 network).  Next we'll allocate the *floating ip* to the instance:
+You'll notice that the IP address that was created is in the public range (10 network):
 
 ```
 (user1) [stack@undercloud ~]$ openstack floating ip list
@@ -270,6 +270,11 @@ You'll notice that the IP address that was created is in the public range (10 ne
 +--------------------------------------+---------------------+------------------+------+--------------------------------------+----------------------------------+
 | 8b4c77d8-2a1e-46e8-b311-3b4225561716 | 10.0.0.119          | None             | None | 019f687e-667e-4db2-9403-aa2a5b12dd51 | d88c6df92a0a4020915c595032bcd379 |
 +--------------------------------------+---------------------+------------------+------+--------------------------------------+----------------------------------+
+```
+
+Allocate the *floating ip* to the instance:
+
+```
 (user1) [stack@undercloud ~]$ FIP=$(openstack floating ip list --status DOWN -c "Floating IP Address" -f value)
 (user1) [stack@undercloud ~]$ openstack server add floating ip test-instance $FIP
 (user1) [stack@undercloud ~]$ openstack server list
