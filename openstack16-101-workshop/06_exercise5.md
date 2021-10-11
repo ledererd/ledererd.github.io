@@ -78,7 +78,7 @@ outputs:
     description: Floating IP address of instance0 in public network
     value: { get_attr: [ instance0_public, floating_ip_address ] }
 ```
-```
+
 If you're not a fan of ```vi```, then we have pre-prepared a copy of this file.  Copy it from here: ```/home/stack/setup/lab/heat_example_basic.yaml```.
 
 You can get a rough idea from reading the YAML file above that it creates an instance similar to our previous web instance, and allocates a floating ip.  Let's run it:
