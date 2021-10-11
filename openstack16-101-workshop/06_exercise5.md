@@ -392,6 +392,7 @@ You'll notice that it creates the new network, subnet and router:
 | 6c1c797c-0dfa-449c-b20f-974a0b8e71bc | private   | 6a919130-ad73-4038-8bf5-59dd93801946 |
 | ac10e5c5-e35d-435e-a1be-a52c05f6b89b | front-net | f541e32c-0034-4240-9ffa-577ca916f1e0 |
 +--------------------------------------+-----------+--------------------------------------+
+
 (user1) [stack@undercloud ~]$ openstack subnet list
 +--------------------------------------+----------------+--------------------------------------+---------------+
 | ID                                   | Name           | Network                              | Subnet        |
@@ -399,6 +400,7 @@ You'll notice that it creates the new network, subnet and router:
 | 6a919130-ad73-4038-8bf5-59dd93801946 | private-subnet | 6c1c797c-0dfa-449c-b20f-974a0b8e71bc | 172.16.1.0/24 |
 | f541e32c-0034-4240-9ffa-577ca916f1e0 | front-subnet   | ac10e5c5-e35d-435e-a1be-a52c05f6b89b | 172.16.2.0/24 |
 +--------------------------------------+----------------+--------------------------------------+---------------+
+
 (user1) [stack@undercloud ~]$ openstack router list
 +--------------------------------------+--------------+--------+-------+----------------------------------+
 | ID                                   | Name         | Status | State | Project                          |
