@@ -181,8 +181,7 @@ parameters:
   private_network_subnet_high:
     label: Subnet higher IP range
     default: 172.16.2.100
-    description: Higher IP address for the private subnet (e.g. 192.168.0.10/24) By default, x.x.x.1 will be set for the gatew
-ay
+    description: Higher IP address for the private subnet (e.g. 192.168.0.10/24) By default, x.x.x.1 will be set for the gateway
     type: string
 
 resources:
