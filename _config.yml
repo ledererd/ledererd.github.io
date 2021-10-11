@@ -5,6 +5,7 @@ author: "Damien Lederer"
 theme: minima
 
 github_username: dlederer
+linkedin_username: damien-lederer
 
 # Minima: show excerpts in the frontpage
 show_excerpts: true
@@ -21,3 +22,11 @@ header_pages:
 
 include:
     - _pages
+
+exclude: 
+    - .gitignore
+    - docker-compose.yml
+    - Gemfile
+    - Gemfile.lock
+    - LICENSE
+    - README.md
