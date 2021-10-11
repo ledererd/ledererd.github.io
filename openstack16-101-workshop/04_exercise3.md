@@ -218,7 +218,7 @@ login as 'cirros' user. default password: 'gocubsgo'. use 'sudo' for root.
 test-instance login: 
 ```
 
-But you will notice that we have no network connectivity to the server:
+But you will notice that we have no network connectivity to the server (the IP address to ping is shown in the ```openstack server list``` command):
 
 ```
 (user1) [stack@undercloud ~]$ ping -c3 172.16.1.138
