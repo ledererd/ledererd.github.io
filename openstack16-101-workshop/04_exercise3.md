@@ -70,7 +70,7 @@ The final dependency before we create an instance is to open up some ports in th
 +--------------------------------------+---------+------------------------+----------------------------------+------+
 ```
 
-Of course, you can create other security groups to provide different levels of access to different instances.  But for now, we'll modify the default:
+Of course, you can create other security groups to provide different levels of access to different instances.  But for now, we'll modify the default by adding two firewall rules to it.  This will open *icmp* and *port 22*:
 
 ```
 (user1) [stack@undercloud ~]$ openstack security group rule create --proto icmp default
