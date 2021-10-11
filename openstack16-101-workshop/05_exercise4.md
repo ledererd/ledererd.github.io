@@ -2,7 +2,7 @@
 layout: page
 permalink: /openstack16-101-workshop/exercise04
 ---
-## Exercise 4 - Create a more functional instance
+__Exercise 4 - Create a more functional instance__
 
 In this exercise, we'll create a slight variation on the first instance by have it service some web traffic.
 
