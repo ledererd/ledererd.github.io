@@ -1,8 +1,8 @@
 ---
 layout: page
-permalink: /liberty-workshop/exercise03
+permalink: /openstack16-101-workshop/exercise03
 ---
-# Exercise 3 -  Create a basic instance (Virtual Machine)
+## Exercise 3 -  Create a basic instance (Virtual Machine)
 
 There's a few things we must set up before we can run an *instance*.  The first of these is to create a base OS image.
 
