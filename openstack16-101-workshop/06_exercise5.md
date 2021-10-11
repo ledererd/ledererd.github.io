@@ -275,6 +275,11 @@ resources:
       router_id: { get_resource : router }
       subnet_id: { get_resource : private_subnet }
 
+  
+  #############################
+  ### NOTE:  The Load balancer extensions are not installed in Heat in the lab environment.  The following lines are
+  ###        included to show how it would look in your environment.
+  #############################
 
   #--------------------------#
   # Load Balancer properties #
