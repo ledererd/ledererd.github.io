@@ -57,7 +57,7 @@ You can list the OS images in your project in OpenStack:
 +--------------------------------------+--------+--------+
 ```
 
-It is possible to create *public* images.  Simply add the *--public* parameter when creating the image, and it should be visible to all tenancies.
+It is possible to create *public* images.  An administrator can create public images for consumption by all users of the OpenStack Cluster.  Simply add the *--public* parameter when creating the image, and it should be visible to all tenancies.
 
 The final dependency before we create an instance is to open up some ports in the security group that controls network access in this project.  Every project gets a *default* security group, and we'll use that.
 
