@@ -2,7 +2,7 @@
 layout: page
 permalink: /openstack16-101-workshop/exercise03
 ---
-## Exercise 3 -  Create a basic instance (Virtual Machine)
+__Exercise 3 -  Create a basic instance (Virtual Machine)__
 
 There's a few things we must set up before we can run an *instance*.  The first of these is to create a base OS image.
 
