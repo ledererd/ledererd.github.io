@@ -2,7 +2,7 @@
 layout: page
 permalink: /openstack16-101-workshop/exercise01
 ---
-# Exercise 1 - Looking around
+## Exercise 1 - Looking around
 
 By now you should be logged into the *Bastion host* in a terminal.  Not much runs on the bastion host, so we'll first *ssh* somewhere more interesting.
 
