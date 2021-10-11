@@ -352,7 +352,7 @@ This template creates everything from scratch, including the network and router.
 Let's run it:
 
 ```
-(user1) [stack@undercloud user1]$ openstack stack create lbaas \
+(user1) [stack@undercloud ~]$ openstack stack create lbaas \
      -t ~/user1/heat_example_lbaas.yaml \
      --parameter public_net=public 
 +---------------------+-----------------------------------------+
@@ -372,7 +372,7 @@ Let's run it:
 You'll notice that it creates the new network, subnet and router:
 
 ```
-(user1) [stack@undercloud user1]$ openstack network list
+(user1) [stack@undercloud ~]$ openstack network list
 +--------------------------------------+-----------+--------------------------------------+
 | ID                                   | Name      | Subnets                              |
 +--------------------------------------+-----------+--------------------------------------+
@@ -380,14 +380,14 @@ You'll notice that it creates the new network, subnet and router:
 | 6c1c797c-0dfa-449c-b20f-974a0b8e71bc | private   | 6a919130-ad73-4038-8bf5-59dd93801946 |
 | ac10e5c5-e35d-435e-a1be-a52c05f6b89b | front-net | f541e32c-0034-4240-9ffa-577ca916f1e0 |
 +--------------------------------------+-----------+--------------------------------------+
-(user1) [stack@undercloud user1]$ openstack subnet list
+(user1) [stack@undercloud ~]$ openstack subnet list
 +--------------------------------------+----------------+--------------------------------------+---------------+
 | ID                                   | Name           | Network                              | Subnet        |
 +--------------------------------------+----------------+--------------------------------------+---------------+
 | 6a919130-ad73-4038-8bf5-59dd93801946 | private-subnet | 6c1c797c-0dfa-449c-b20f-974a0b8e71bc | 172.16.1.0/24 |
 | f541e32c-0034-4240-9ffa-577ca916f1e0 | front-subnet   | ac10e5c5-e35d-435e-a1be-a52c05f6b89b | 172.16.2.0/24 |
 +--------------------------------------+----------------+--------------------------------------+---------------+
-(user1) [stack@undercloud user1]$ openstack router list
+(user1) [stack@undercloud ~]$ openstack router list
 +--------------------------------------+--------------+--------+-------+----------------------------------+
 | ID                                   | Name         | Status | State | Project                          |
 +--------------------------------------+--------------+--------+-------+----------------------------------+
@@ -399,7 +399,7 @@ You'll notice that it creates the new network, subnet and router:
 It also creates the new instances, and they are in the <i>172.16.2.0/24</i> subnet:
 
 ```
-(user1) [stack@undercloud user1]$ openstack server list
+(user1) [stack@undercloud ~]$ openstack server list
 +--------------------------------------+---------------------------------+--------+----------------------------------+--------+--------+
 | ID                                   | Name                            | Status | Networks                         | Image  | Flavor |
 +--------------------------------------+---------------------------------+--------+----------------------------------+--------+--------+
@@ -414,40 +414,40 @@ It also creates the new instances, and they are in the <i>172.16.2.0/24</i> subn
 However, it doesn't create the load balancer in front of the two instances.  So let's create those by hand.  The commands are listed below without their outputs:
 
 ```
-(user1) [stack@undercloud user1]$ openstack loadbalancer create --name lbweb --vip-subnet-id front-subnet
-(user1) [stack@undercloud user1]$ openstack loadbalancer list
-(user1) [stack@undercloud user1]$ sleep 60
-(user1) [stack@undercloud user1]$ openstack loadbalancer list
-(user1) [stack@undercloud user1]$ openstack loadbalancer listener create --name listenerweb --protocol HTTP --protocol-port 80 lbweb
-(user1) [stack@undercloud user1]$ openstack loadbalancer pool create --name poolweb --protocol HTTP  --listener listenerweb --lb-algorithm ROUND_ROBIN
-(user1) [stack@undercloud user1]$ openstack server list
-(user1) [stack@undercloud user1]$ IPWEB01=$(openstack server show front-node-1 -c addresses -f value | cut -d"=" -f2)
-(user1) [stack@undercloud user1]$ IPWEB02=$(openstack server show front-node-2 -c addresses -f value | cut -d"=" -f2)
-(user1) [stack@undercloud user1]$ echo $IPWEB01 $IPWEB02
-(user1) [stack@undercloud user1]$ openstack loadbalancer member create --name web01 --address $IPWEB01 --protocol-port 80 poolweb
-(user1) [stack@undercloud user1]$ openstack loadbalancer member create --name web02 --address $IPWEB02 --protocol-port 80 poolweb
+(user1) [stack@undercloud ~]$ openstack loadbalancer create --name lbweb --vip-subnet-id front-subnet
+(user1) [stack@undercloud ~]$ openstack loadbalancer list
+(user1) [stack@undercloud ~]$ sleep 60
+(user1) [stack@undercloud ~]$ openstack loadbalancer list
+(user1) [stack@undercloud ~]$ openstack loadbalancer listener create --name listenerweb --protocol HTTP --protocol-port 80 lbweb
+(user1) [stack@undercloud ~]$ openstack loadbalancer pool create --name poolweb --protocol HTTP  --listener listenerweb --lb-algorithm ROUND_ROBIN
+(user1) [stack@undercloud ~]$ openstack server list
+(user1) [stack@undercloud ~]$ IPWEB01=$(openstack server show front-node-1 -c addresses -f value | cut -d"=" -f2)
+(user1) [stack@undercloud ~]$ IPWEB02=$(openstack server show front-node-2 -c addresses -f value | cut -d"=" -f2)
+(user1) [stack@undercloud ~]$ echo $IPWEB01 $IPWEB02
+(user1) [stack@undercloud ~]$ openstack loadbalancer member create --name web01 --address $IPWEB01 --protocol-port 80 poolweb
+(user1) [stack@undercloud ~]$ openstack loadbalancer member create --name web02 --address $IPWEB02 --protocol-port 80 poolweb
 ```
 
 At this point, the *load balancer* is created, but its IP address is in the private range.  We need to create a floating ip for it just like we did for the instances:
 
 ```
-(user1) [stack@undercloud user1]$ VIP=$(openstack loadbalancer show lbweb -c vip_address -f value)
-(user1) [stack@undercloud user1]$ PORTID=$(openstack port list --fixed-ip ip-address=$VIP -c ID -f value)
-(user1) [stack@undercloud user1]$ openstack floating ip create public
-(user1) [stack@undercloud user1]$ FIP=$(openstack floating ip list --status DOWN -c "Floating IP Address" -f value)
-(user1) [stack@undercloud user1]$ openstack floating ip set --port $PORTID $FIP
+(user1) [stack@undercloud ~]$ VIP=$(openstack loadbalancer show lbweb -c vip_address -f value)
+(user1) [stack@undercloud ~]$ PORTID=$(openstack port list --fixed-ip ip-address=$VIP -c ID -f value)
+(user1) [stack@undercloud ~]$ openstack floating ip create public
+(user1) [stack@undercloud ~]$ FIP=$(openstack floating ip list --status DOWN -c "Floating IP Address" -f value)
+(user1) [stack@undercloud ~]$ openstack floating ip set --port $PORTID $FIP
 ```
 
 To test it out, we can *curl* the load balanced address several times to ensure it is round-robbining between the two instances:
 
 ```
-(user1) [stack@undercloud user1]$ curl $FIP
+(user1) [stack@undercloud ~]$ curl $FIP
 Welcome to 172.16.2.18
-(user1) [stack@undercloud user1]$ curl $FIP
+(user1) [stack@undercloud ~]$ curl $FIP
 Welcome to 172.16.2.64
-(user1) [stack@undercloud user1]$ curl $FIP
+(user1) [stack@undercloud ~]$ curl $FIP
 Welcome to 172.16.2.18
-(user1) [stack@undercloud user1]$ curl $FIP
+(user1) [stack@undercloud ~]$ curl $FIP
 Welcome to 172.16.2.64
 ```
 
