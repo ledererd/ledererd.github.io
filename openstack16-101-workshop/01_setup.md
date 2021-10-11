@@ -2,7 +2,7 @@
 layout: page
 permalink: /openstack16-101-workshop/setup
 ---
-# Environment Setup
+__Environment Setup__
 
 The instructor should have already provisioned the cluster.
 
