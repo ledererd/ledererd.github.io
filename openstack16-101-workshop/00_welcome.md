@@ -15,12 +15,16 @@ In this workshop you will:
 * Create a more functional instance
 * Create a working template, with load balanced workload
 
+OpenStack has a nice web user interface called [Horizon](https://docs.openstack.org/horizon/latest/).  However, the real power in OpenStack comes from *automation*, and being effective on the command-line brings you a long way towards automating Stack.
+
+This lab will therefore focus on driving OpenStack from the command-line.
+
 To complete this workshop you will need:
-* A web browser
+* A web browser (to view these instructions)
 * An ssh client (eg. Putty)
 * A basic familiarity with the Linux command line
 
-[Click here](setup) to get started
+To get started, click on the first link (Setup), below.
 
 Exercise Links:
 * [Setup](setup)
