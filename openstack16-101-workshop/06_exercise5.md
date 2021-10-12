@@ -138,7 +138,11 @@ Notice that because we did not give this instance a name in the template, OpenSt
 
 #### Creating a Load Balanced instance
 
-For our final lab exercise, we'll create a load balanced instance.  Create another heat template ```/home/stack/userX/heat_example_lbaas.yaml```:
+For our final lab exercise, we'll create a load balanced instance.  The network will look like the following:
+
+![rhosp16-101-loadbalanced-network](rhosp16-101-lbaas-network.png)
+
+Create another heat template ```/home/stack/userX/heat_example_lbaas.yaml```:
 
 ```
 heat_template_version: rocky
