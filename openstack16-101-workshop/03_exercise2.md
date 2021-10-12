@@ -4,6 +4,10 @@ permalink: /openstack16-101-workshop/exercise02
 ---
 __Exercise 2 - Create a basic network__
 
+The following diagram shows the final layout for the next couple of exercises:
+
+![rhosp16-101-simple-network](rhosp16-101-simple-network.png)
+
 Since we're segregating students in the lab by *projects*, let's now switch to the the project allocated to you.
 
 The details of the project are encoded in a configuration file.  The configuration files are located at */home/stack/userX/userX
