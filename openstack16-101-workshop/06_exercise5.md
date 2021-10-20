@@ -85,7 +85,7 @@ You can get a rough idea from reading the YAML file above that it creates an ins
 
 ```
 (user1) [stack@undercloud ~]$ openstack stack create example1 \
-     -t ~/user1/heat_example_basic.yaml \
+     -t ~/${OS_USERNAME}/heat_example_basic.yaml \
      --parameter PrivateNet=private \
      --parameter PrivateSubnet=private-subnet \
      --parameter PublicNet=public
@@ -357,7 +357,7 @@ Let's run it:
 
 ```
 (user1) [stack@undercloud ~]$ openstack stack create lbaas \
-     -t ~/user1/heat_example_lbaas.yaml \
+     -t ~/${OS_USERNAME}/heat_example_lbaas.yaml \
      --parameter public_net=public 
 +---------------------+-----------------------------------------+
 | Field               | Value                                   |
