@@ -67,6 +67,8 @@ We'll switch to your project in a second.  But first, let's continue to explore.
 
 The public network is attached to the underlying phsyical provider network, and therefore is the bridge outside of the cluster.
 
+*NOTE: You may see other networks in this list.  This means that others may be ahead of you in the lab.*
+
 There is a public subnet (attached to the *public* network) created in the range *10.0.0.0/24*:
 
 ```
